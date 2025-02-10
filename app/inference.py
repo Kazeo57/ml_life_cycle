@@ -2,11 +2,21 @@ import pandas as pd
 import joblib
 import numpy as np
 
-# Charger le modèle et le préprocesseur
-model = joblib.load("best_xgb_model.pkl")
-preprocessor = joblib.load("preprocessor.pkl")
 
-# Exemple d'un nouveau client (changer les valeurs selon le dataset)
+def preprocess_input(features):
+    # Exemple de prétraitement des données
+    return np.array(features).reshape(1, -1)
+
+def predict(model, input_data):
+    # Exemple de prédiction
+    return model.predict(input_data).tolist()
+
+
+# Charger le modèle et le préprocesseur
+model = joblib.load("model/best_xgb_model.pkl")
+preprocessor = joblib.load("model/preprocessor.pkl")
+
+# Exeple d'un nouveau client (changer les valeurs selon le dataset)
 new_client = pd.DataFrame({
     "gender": ["Male"],
     "SeniorCitizen": [0],
